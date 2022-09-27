@@ -1,9 +1,8 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import Chirp from "@/Components/Chirp.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import { useForm, Head, Link  } from "@inertiajs/inertia-vue3";
+import { useForm, Head } from "@inertiajs/inertia-vue3";
 
 defineProps(["chirps"]);
 
@@ -17,7 +16,7 @@ const form = useForm({
 
     <AuthenticatedLayout>
         <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-            <!-- <form
+            <form
                 @submit.prevent="
                     form.post(route('chirps.store'), {
                         onSuccess: () => form.reset(),
@@ -31,15 +30,7 @@ const form = useForm({
                 ></textarea>
                 <InputError :message="form.errors.message" class="mt-2" />
                 <PrimaryButton class="mt-4">Chirp</PrimaryButton>
-            </form> -->
-
-            <Link :href="route('chirps.create')">
-                <PrimaryButton class="mt-4">Create</PrimaryButton>
-            </Link>
-
-            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
-                <Chirp v-for="chirp in chirps" :key="chirp.id" :chirp="chirp" />
-            </div>
+            </form>
         </div>
     </AuthenticatedLayout>
 </template>
